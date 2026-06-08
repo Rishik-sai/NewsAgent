@@ -1,0 +1,53 @@
+@import "tailwindcss";
+
+@custom-variant dark (&:where(.dark, .dark *));
+@theme {
+  --color-agentBlue: #6366f1;
+  --color-agentGreen: #10b981;
+  --color-agentRed: #f43f5e;
+  --color-darkBg: #050511;
+  --color-darkCard: rgba(15, 23, 42, 0.6);
+  --color-lightBg: #f1f5f9;
+  --color-lightCard: rgba(255, 255, 255, 0.7);
+}
+
+@layer base {
+  html, body, #root {
+    height: 100%;
+    margin: 0;
+    overflow: hidden;
+  }
+  html {
+    font-family: 'Outfit', sans-serif;
+  }
+  body {
+    @apply bg-lightBg text-slate-800 antialiased;
+    font-family: 'Outfit', sans-serif;
+  }
+  .dark body {
+    @apply bg-darkBg text-slate-100;
+  }
+}
+
+@layer utilities {
+  .glass-panel {
+    @apply backdrop-blur-xl border border-white/20 dark:border-white/10 shadow-xl;
+  }
+  .glass-panel-light {
+    @apply bg-white/70 dark:bg-slate-900/60 backdrop-blur-xl border border-white/40 dark:border-white/10 shadow-[0_8px_30px_rgb(0,0,0,0.04)] dark:shadow-[0_8px_30px_rgb(0,0,0,0.2)];
+  }
+  
+  /* Custom scrollbar for a sleeker look */
+  .custom-scrollbar::-webkit-scrollbar {
+    width: 6px;
+  }
+  .custom-scrollbar::-webkit-scrollbar-track {
+    background: transparent;
+  }
+  .custom-scrollbar::-webkit-scrollbar-thumb {
+    @apply bg-slate-200 dark:bg-slate-800 rounded-full;
+  }
+  .custom-scrollbar::-webkit-scrollbar-thumb:hover {
+    @apply bg-slate-300 dark:bg-slate-700;
+  }
+}
